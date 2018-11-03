@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Arrays;
 class PageRank {
 	
+	
 }
 
 class WebSearch {
@@ -11,14 +12,14 @@ class WebSearch {
 
 public class Solution {
 	public static void main(String[] args) {
-	      int nodes,i,j,cost;
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the Number of WebPages \n");
-        nodes = in.nextInt();
-        PageRank p = new PageRank();
-        System.out.println("Enter the Adjacency Matrix with 1->PATH & 0->NO PATH Between two WebPages: \n");
-        for(i=1;i<=nodes;i++)
-          for(j=1;j<=nodes;j++);
+	      // int nodes,i,j,cost;
+       //  Scanner in = new Scanner(System.in);
+       //  System.out.println("Enter the Number of WebPages \n");
+       //  nodes = in.nextInt();
+       //  PageRank p = new PageRank();
+       //  System.out.println("Enter the Adjacency Matrix with 1->PATH & 0->NO PATH Between two WebPages: \n");
+       //  for(i=1;i<=nodes;i++)
+       //    for(j=1;j<=nodes;j++);
         // p.calc(nodes);
 
 		// read the first line of the input to get the number of vertices
