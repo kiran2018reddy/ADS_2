@@ -1,5 +1,3 @@
-import java.util.Scanner;
-import java.util.Arrays;
 /**
  * Class for page rank.
  */
@@ -13,7 +11,7 @@ class WebSearch {
 /**
  * Class for solution.
  */
-class Solution {
+public class Solution {
 	/**
 	 * { function_description }.
 	 *
