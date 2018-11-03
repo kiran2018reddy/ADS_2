@@ -11,13 +11,13 @@ class WebSearch {
 /**
  * Class for solution.
  */
-public class Solution {
-	/**
-	 * { function_description }.
-	 *
-	 * @param      args  The arguments.
-	 */
-	public static void main(final String[] args) {
-	     String file = "WebContent.txt";
-	}
+class Solution {
+    /**
+     * { function_description }.
+     *
+     * @param      args  The arguments.
+     */
+    public static void main(final String[] args) {
+         String file = "WebContent.txt";
+    }
 }
