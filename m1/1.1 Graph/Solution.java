@@ -4,7 +4,6 @@ import java.util.Scanner;
  * Interface for graph.
  */
 interface Graph {
-   
     /**
      * { vertices }
      *
@@ -12,9 +11,9 @@ interface Graph {
      */
     int vertices();
     /**
-     * { edges }
+     * { edges }.
      *
-     * @return     { description_of_the_return_value }
+     * @return     { description_of_the_return_value }.
      */
     int edges();
     /**
@@ -25,14 +24,13 @@ interface Graph {
      */
     void addEdge(int v, int w);
     /**
-     * { iterable }
+     * { iterable }.
      *
-     * @param      v     {int}
+     * @param      v     {int}.
      *
-     * @return     { int }
+     * @return     { int }.
      */
     Iterable<Integer> adj(int v);
-    
     /**
      * Determines if it has edge.
      *
@@ -49,15 +47,15 @@ interface Graph {
  */
 class Newgraph implements Graph {
     /**
-     * { vertices }
+     * { vertices }.
      */
     private int vertices;
     /**
-     * { edges }
+     * { edges }.
      */
     private int edges;
     /**
-     * { bag adj}
+     * { bag adj}.
      */
      private Bag<Integer>[] adj;
      /**
