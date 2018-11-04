@@ -5,9 +5,9 @@ import java.util.Scanner;
  */
 interface Graph {
     /**
-     * { vertices }
+     * { vertices }.
      *
-     * @return     { description_of_the_return_value }
+     * @return     { description_of_the_return_value }.
      */
     int vertices();
     /**
@@ -264,4 +264,3 @@ public final class Solution {
         }
     }
 }
-
