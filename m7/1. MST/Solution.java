@@ -2,7 +2,7 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
+class Solution {
     /**
      * { function_description }.
      *
