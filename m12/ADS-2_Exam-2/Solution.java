@@ -23,15 +23,14 @@ public final class Solution {
         int edges = Integer.parseInt(scan.nextLine());
         EdgeWeightedGraph edgeGraph
             = new EdgeWeightedGraph(vertices);
-        int k = edges;
-        while (k > 0) {
+        int i = edges;
+        while (i > 0) {
             String[] edgeString
                 = scan.nextLine().split(" ");
-            Edge ed = new Edge(Integer.parseInt(edgeString[0]),
-                               Integer.parseInt(edgeString[1]),
-                               Integer.parseInt(edgeString[2]));
-            edgeGraph.addEdge(ed);
-            k--;
+            Edge edge = new Edge(Integer.parseInt(edgeString[0]),
+Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
+            edgeGraph.addEdge(edge);
+            i--;
         }
 
         String caseToGo = scan.nextLine();
@@ -50,12 +49,12 @@ public final class Solution {
             // between them.
             // Other wise print "No Path Found."
             String[] dirPaths = scan.nextLine().split(" ");
-            int s = Integer.parseInt(dirPaths[0]);
-            int d = Integer.parseInt(dirPaths[1]);
+            int p = Integer.parseInt(dirPaths[0]);
+            int q = Integer.parseInt(dirPaths[1]);
             DijkstrasSP sp
-                = new DijkstrasSP(edgeGraph, s);
-            if (sp.hasPathTo(d)) {
-                System.out.println(sp.distTo(d));
+                = new DijkstrasSP(edgeGraph, p);
+            if (sp.hasPathTo(q)) {
+                System.out.println(sp.distTo(q));
             } else {
                 System.out.println("No Path Found.");
             }
@@ -70,12 +69,12 @@ public final class Solution {
             // If the path exists print the distance between them.
             // Other wise print "No Path Found."
             String[] viaPaths = scan.nextLine().split(" ");
-            s = Integer.parseInt(viaPaths[0]);
+            p = Integer.parseInt(viaPaths[0]);
             int via = Integer.parseInt(viaPaths[1]);
-            d = Integer.parseInt(viaPaths[viaPaths.length - 1]);
+            q = Integer.parseInt(viaPaths[viaPaths.length - 1]);
             DijkstrasSP dsp
-                = new DijkstrasSP(edgeGraph, s);
-            if (dsp.hasPathTo(d)) {
+                = new DijkstrasSP(edgeGraph, p);
+            if (dsp.hasPathTo(q)) {
                 Qaueue<Integer> que = new Qaueue<Integer>();
                 for (Edge e : dsp.pathTo(via)) {
                     int ver = e.either();
@@ -100,7 +99,7 @@ public final class Solution {
                 }
                 DijkstrasSP two
                     = new DijkstrasSP(edgeGraph, via);
-                for (Edge e : two.pathTo(d)) {
+                for (Edge e : two.pathTo(q)) {
                     int ver = e.either();
                     int other = e.other(ver);
                     int v = 0;
@@ -121,7 +120,7 @@ public final class Solution {
                         que.enqueue(other);
                     }
                 }
-                System.out.println(dsp.distTo(via) + two.distTo(d));
+                System.out.println(dsp.distTo(via) + two.distTo(q));
                 while (!que.isEmpty()) {
                     System.out.print(que.dequeue() + " ");
                 }
