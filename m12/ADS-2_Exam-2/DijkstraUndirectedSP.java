@@ -28,18 +28,18 @@ class DijkstraUndirectedSP {
                     "edge " + e + " has negative weight");
             }
         }
-        distTo = new double[g.edges()];
-        edgeTo = new Edge[g.edges()];
+        distTo = new double[g.V()];
+        edgeTo = new Edge[g.V()];
 
         validateVertex(s);
 
-        for (int v = 0; v < g.edges(); v++) {
+        for (int v = 0; v < g.V(); v++) {
             distTo[v] = Double.POSITIVE_INFINITY;
         }
         distTo[s] = 0.0;
 
         // relax vertices in order of distance from s
-        pq = new IndexMinPQ<Double>(g.edges());
+        pq = new IndexMinPQ<Double>(g.V());
         pq.insert(s, distTo[s]);
         while (!pq.isEmpty()) {
             int v = pq.delMin();

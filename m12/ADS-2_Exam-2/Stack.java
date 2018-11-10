@@ -1,59 +1,66 @@
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 /**
- * Stack class.
+ * List of .
+ *
  * @param      <Item>  The item
  */
 public class Stack<Item> implements Iterable<Item> {
     /**
-     * top of stack.
+     * first.
      */
     private Node<Item> first;
     /**
-     * size of the stack.
+     * n.
      */
     private int n;
+
     /**
      * Class for node.
+     *
      * @param      <Item>  The item
      */
     private static class Node<Item> {
         /**
-         * item of type Item.
+         * { var_description }.
          */
         private Item item;
         /**
-         * next of type Node.
+         * { var_description }.
          */
         private Node<Item> next;
     }
+
     /**
-     * Initializes an empty stack.
+     * Constructs the object.
      */
-    public Stack() {
+    Stack() {
         first = null;
         n = 0;
     }
+
     /**
-     * Returns true if this stack is empty.
-     * @return true if this stack is empty;
-     * false otherwise
-     * The time complexity is O(1).
+     * Determines if empty.
+     *
+     * @return     True if empty, False otherwise.
      */
     public boolean isEmpty() {
         return first == null;
     }
+
     /**
-     * Returns the number of items in this stack.
-     * @return the number of items in this stack
-     * The time complexity is O(1).
+     * { function_description }.
+     *
+     * @return     { description_of_the_return_value }
      */
     public int size() {
         return n;
     }
+
     /**
-     * Adds the item to this stack.
-     * @param  item the item to add
-     * The time complexity is O(1).
+     * { function_description }.
+     *
+     * @param      item  The item
      */
     public void push(final Item item) {
         Node<Item> oldfirst = first;
@@ -62,31 +69,41 @@ public class Stack<Item> implements Iterable<Item> {
         first.next = oldfirst;
         n++;
     }
+
     /**
-     * Removes and returns the item most recently added to this stack.
-     * @return the item most recently added
-     * The time complexity is O(1).
+     * { function_description }.
+     *
+     * @return     { description_of_the_return_value }
      */
     public Item pop() {
-        Item item = first.item;        // save item to return
-        first = first.next;            // delete first node
+        if (isEmpty()) {
+            throw new NoSuchElementException(
+                "Stack underflow");
+        }
+        Item item = first.item;
+        first = first.next;
         n--;
-        return item;                   // return the saved item
+        return item;
     }
+
+
     /**
-     * Returns (but does not remove) the item most recently
-     * added to this stack.
-     * @return the item most recently added to this stack
-     * The time complexity is O(1).
+     * { function_description }.
+     *
+     * @return     { description_of_the_return_value }
      */
     public Item peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException(
+                "Stack underflow");
+        }
         return first.item;
     }
+
     /**
-     * Returns a string representation of this stack.
-     * @return the sequence of items in this stack in
-     * LIFO order, separated by spaces
-     * The time complexity is O(N).
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
      */
     public String toString() {
         StringBuilder s = new StringBuilder();
@@ -96,54 +113,62 @@ public class Stack<Item> implements Iterable<Item> {
         }
         return s.toString();
     }
+
+
     /**
-     * Returns an iterator to this stack that
-     * iterates through the items in LIFO order.
-     * @return an iterator to this stack that iterates
-     * through the items in LIFO order
+     * { function_description }.
+     *
+     * @return     { description_of_the_return_value }
      */
     public Iterator<Item> iterator() {
         return new ListIterator<Item>(first);
     }
+
     /**
      * Class for list iterator.
+     *
      * @param      <Item>  The item
      */
     private class ListIterator<Item> implements Iterator<Item> {
         /**
-         * current of type Node.
+         * { var_description }.
          */
         private Node<Item> current;
         /**
          * Constructs the object.
-         * @param      f  The first
+         *
+         * @param      firstval  The first
          */
-        ListIterator(final Node<Item> f) {
-            current = f;
+        ListIterator(final Node<Item> firstval) {
+            current = firstval;
         }
         /**
          * Determines if it has next.
+         *
          * @return     True if has next, False otherwise.
-         * The time complexity is O(1).
          */
         public boolean hasNext() {
             return current != null;
         }
         /**
-         * remove method.
+         * { function_description }.
          */
         public void remove() {
             throw new UnsupportedOperationException();
         }
         /**
-         * This returns the next item of the current item.
-         * @return     Item.
-         * The time complexity is O(1).
+         * { function_description }.
+         *
+         * @return     { description_of_the_return_value }
          */
         public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
             Item item = current.item;
             current = current.next;
             return item;
         }
     }
+
 }
