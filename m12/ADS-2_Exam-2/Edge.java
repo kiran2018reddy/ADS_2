@@ -7,6 +7,7 @@
  *
  ******************************************************************************/
 
+
 /**
  *  The {@code Edge} class represents a weighted edge in an
  *  {@link EdgeWeightedGraph}. Each edge consists of two integers
@@ -15,27 +16,24 @@
  *  the weight. The natural order for this data type is by
  *  ascending order of weight.
  *  <p>
- *  For additional documentation, see <a href="https://
- *  algs4.cs.princeton.edu/43mst">Section 4.3</a> of
+ *  For additional documentation,
+ *  see <a href="https://algs4.cs.princeton.edu/43mst">Section 4.3</a> of
  *  <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-/**
- * Class for edge.
- */
 public class Edge implements Comparable<Edge> {
-   /**
-    * vertex v.
-    */
+    /**
+     * Value.
+     */
     private final int v;
     /**
-     * vertex w.
+     * Value.
      */
     private final int w;
     /**
-     * weight.
+     * Value.
      */
     private final double weight;
 
@@ -51,7 +49,18 @@ public class Edge implements Comparable<Edge> {
      * @throws IllegalArgumentException if {@code weight} is {@code NaN}
      */
     public Edge(final int v1, final int w1, final double weight1) {
-
+        if (v1 < 0) {
+            throw new IllegalArgumentException(
+                "vertex index must be a nonnegative integer");
+        }
+        if (w1 < 0) {
+            throw new IllegalArgumentException(
+                "vertex index must be a nonnegative integer");
+        }
+        if (Double.isNaN(weight1)) {
+            throw new IllegalArgumentException(
+                "Weight is NaN");
+        }
         this.v = v1;
         this.w = w1;
         this.weight = weight1;
@@ -59,7 +68,6 @@ public class Edge implements Comparable<Edge> {
 
     /**
      * Returns the weight of this edge.
-     * The time complexity is O(1).
      *
      * @return the weight of this edge
      */
@@ -69,7 +77,6 @@ public class Edge implements Comparable<Edge> {
 
     /**
      * Returns either endpoint of this edge.
-     * The time complexity is O(1).
      *
      * @return either endpoint of this edge
      */
@@ -78,10 +85,8 @@ public class Edge implements Comparable<Edge> {
     }
 
     /**
-     * Returns the endpoint of this edge that is different.
-     * The time complexity is O(1).
-     *
-     * from the given vertex.
+     * Returns the endpoint of this edge that is different from the
+     * given vertex.
      *
      * @param  vertex one endpoint of this edge
      * @return the other endpoint of this edge
@@ -97,22 +102,56 @@ public class Edge implements Comparable<Edge> {
             throw new IllegalArgumentException("Illegal endpoint");
         }
     }
+
     /**
      * Compares two edges by weight.
-     * The time complexity is O(1).
-     *
-     * Note that {@code compareTo()} is not consistent with {@code equals()},
-     * which uses the reference equality implementation
-     * inherited from {@code Object}.
+     * Note that {@code compareTo()} is not consistent with
+     * {@code equals()},
+     * which uses the reference equality implementation inherited from
+     * {@code Object}.
      *
      * @param  that the other edge
-     * @return a negative integer, zero, or positive
-     * integer depending on whether
-     *         the weight of this is less than, equal to, or greater than the
+     * @return a negative integer, zero, or positive integer
+     * depending on whether
+     *         the weight of this is less than, equal to, or
+     *         greater than the
      *         argument edge
      */
     @Override
     public int compareTo(final Edge that) {
         return Double.compare(this.weight, that.weight);
     }
+
+    /**
+     * Returns a string representation of this edge.
+     *
+     * @return a string representation of this edge
+     */
+    public String toString() {
+        return String.format("%d-%d %.5f", v, w, weight);
+    }
 }
+
+/*****************************************************************************
+ *  Copyright 2002-2018, Robert Sedgewick and Kevin Wayne.
+ *
+ *  This file is part of algs4.jar, which accompanies the textbook
+ *
+ *      Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne,
+ *      Addison-Wesley Professional, 2011, ISBN 0-321-57351-X.
+ *      http://algs4.cs.princeton.edu
+ *
+ *
+ *  algs4.jar is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  algs4.jar is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with algs4.jar.  If not, see http://www.gnu.org/licenses.
+ *****************************************************************************/
