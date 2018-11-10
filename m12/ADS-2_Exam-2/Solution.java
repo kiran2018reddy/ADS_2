@@ -28,7 +28,7 @@ public final class Solution {
             String[] edgeString
                 = scan.nextLine().split(" ");
             Edge edge = new Edge(Integer.parseInt(edgeString[0]),
-Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
+Integer.parseInt(edgeString[1]), Integer.parseInt(edgeString[2]));
             edgeGraph.addEdge(edge);
             i--;
         }
@@ -48,13 +48,13 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
             // If the path exists print the distance
             // between them.
             // Other wise print "No Path Found."
-            String[] dirPaths = scan.nextLine().split(" ");
-            int p = Integer.parseInt(dirPaths[0]);
-            int q = Integer.parseInt(dirPaths[1]);
-            DijkstraUndirectedSP sp
+            String[] directedPaths = scan.nextLine().split(" ");
+            int p = Integer.parseInt(directedPaths[0]);
+            int q = Integer.parseInt(directedPaths[1]);
+            DijkstraUndirectedSP shtpath
                 = new DijkstraUndirectedSP(edgeGraph, p);
-            if (sp.hasPathTo(q)) {
-                System.out.println(sp.distTo(q));
+            if (shtpath.hasPathTo(q)) {
+                System.out.println(shtpath.distTo(q));
             } else {
                 System.out.println("No Path Found.");
             }
@@ -72,17 +72,17 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
             p = Integer.parseInt(viaPaths[0]);
             int via = Integer.parseInt(viaPaths[1]);
             q = Integer.parseInt(viaPaths[viaPaths.length - 1]);
-            DijkstraUndirectedSP dsp
+            DijkstraUndirectedSP dshtpath
                 = new DijkstraUndirectedSP(edgeGraph, p);
-            if (dsp.hasPathTo(q)) {
+            if (dshtpath.hasPathTo(q)) {
                 Qaueue<Integer> que = new Qaueue<Integer>();
-                for (Edge e : dsp.pathTo(via)) {
-                    int ver = e.either();
-                    int other = e.other(ver);
+                for (Edge e : dshtpath.pathTo(via)) {
+                    int vertex = e.either();
+                    int other = e.other(vertex);
                     int v = 0;
                     int w = 0;
                     for (Integer j : que) {
-                        if (ver == j) {
+                        if (vertex == j) {
                             v = 1;
                         }
                         if (other == j) {
@@ -94,18 +94,18 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
                         que.enqueue(other);
                     }
                     if (v == 0) {
-                        que.enqueue(ver);
+                        que.enqueue(vertex);
                     }
                 }
                 DijkstraUndirectedSP two
                     = new DijkstraUndirectedSP(edgeGraph, via);
                 for (Edge e : two.pathTo(q)) {
-                    int ver = e.either();
-                    int other = e.other(ver);
+                    int vertex = e.either();
+                    int other = e.other(vertex);
                     int v = 0;
                     int w = 0;
                     for (Integer j : que) {
-                        if (ver == j) {
+                        if (vertex == j) {
                             v = 1;
                         }
                         if (other == j) {
@@ -114,13 +114,13 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
 
                     }
                     if (v == 0) {
-                        que.enqueue(ver);
+                        que.enqueue(vertex);
                     }
                     if (w == 0) {
                         que.enqueue(other);
                     }
                 }
-                System.out.println(dsp.distTo(via) + two.distTo(q));
+                System.out.println(dshtpath.distTo(via) + two.distTo(q));
                 while (!que.isEmpty()) {
                     System.out.print(que.dequeue() + " ");
                 }
