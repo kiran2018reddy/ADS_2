@@ -51,8 +51,8 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
             String[] dirPaths = scan.nextLine().split(" ");
             int p = Integer.parseInt(dirPaths[0]);
             int q = Integer.parseInt(dirPaths[1]);
-            DijkstrasSP sp
-                = new DijkstrasSP(edgeGraph, p);
+            DijkstraUndirectedSP sp
+                = new DijkstraUndirectedSP(edgeGraph, p);
             if (sp.hasPathTo(q)) {
                 System.out.println(sp.distTo(q));
             } else {
@@ -72,8 +72,8 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
             p = Integer.parseInt(viaPaths[0]);
             int via = Integer.parseInt(viaPaths[1]);
             q = Integer.parseInt(viaPaths[viaPaths.length - 1]);
-            DijkstrasSP dsp
-                = new DijkstrasSP(edgeGraph, p);
+            DijkstraUndirectedSP dsp
+                = new DijkstraUndirectedSP(edgeGraph, p);
             if (dsp.hasPathTo(q)) {
                 Qaueue<Integer> que = new Qaueue<Integer>();
                 for (Edge e : dsp.pathTo(via)) {
@@ -97,8 +97,8 @@ Integer.parseInt(edgeString[1]),Integer.parseInt(edgeString[2]));
                         que.enqueue(ver);
                     }
                 }
-                DijkstrasSP two
-                    = new DijkstrasSP(edgeGraph, via);
+                DijkstraUndirectedSP two
+                    = new DijkstraUndirectedSP(edgeGraph, via);
                 for (Edge e : two.pathTo(q)) {
                     int ver = e.either();
                     int other = e.other(ver);
