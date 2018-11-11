@@ -3,7 +3,7 @@ import java.util.Arrays;
 /**
  * Class for solution.
  */
-public class Solution {
+final public class Solution {
 
 /**
  * { function_description }.
@@ -20,7 +20,7 @@ picture.width(), picture.height());
         StdOut.printf("Printing energy calculated for each pixel.\n");
 
         for (int row = 0; row < sc.height(); row++) {
-            for (int col = 0; col < sc.width(); col++){
+            for (int col = 0; col < sc.width(); col++) {
                 StdOut.printf("%9.0f ", sc.energy(col, row));
             }
             StdOut.println();
@@ -41,7 +41,7 @@ final int[] seam, final boolean direction) {
             for (int col = 0; col < carver.width(); col++) {
                 double energy = carver.energy(col, row);
                 String marker = " ";
-                if ((direction == true && row == seam[col])
+if ((direction == true && row == seam[col])
 ||(direction == false   && col == seam[row])) {
                     marker = "*";
                     totalSeamEnergy += energy;
@@ -55,7 +55,11 @@ final int[] seam, final boolean direction) {
         StdOut.println();
         StdOut.println();
     }
-
+/**
+ * { function_description }.
+ *
+ * @param      args  The arguments.
+ */
     public static void main(final String[] args) {
         Scanner scan = new Scanner(System.in);
         String cases = scan.nextLine();
