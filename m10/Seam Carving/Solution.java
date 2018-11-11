@@ -4,6 +4,12 @@ import java.util.Arrays;
  * Class for solution.
  */
 final public class Solution {
+    /**
+     * Constructs the object.
+     */
+    private Solution(){
+
+    }
 
 /**
  * { function_description }.
