@@ -223,7 +223,7 @@ public class SeamCarver {
 			this.inputpic.set(col, row, this.inputpic.get(col, row + 1));
 		}
 	}
-	// height()--;
+	 // height()--;
 	}
 	// remove vertical seam from current picture
 	//time complexity is O(width * height)
@@ -233,6 +233,6 @@ public class SeamCarver {
 		this.inputpic.set(col, row, this.inputpic.get(col + 1, row));
 		}
 	}
-	// width()--;
+	 // width()--;
 	}
 }
