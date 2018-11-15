@@ -54,3 +54,4 @@ for (String word : solver.getAllValidWords(board)) {
 
     }
 }
+
