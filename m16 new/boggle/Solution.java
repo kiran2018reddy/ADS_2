@@ -47,7 +47,7 @@ for (String word : solver.getAllValidWords(board)) {
                 }
                 StdOut.println("Score = " + score);
             } catch (Exception ex) {
-                System.out.println("Board is null");
+                System.out.println("board is null");
             }
             break;
         }
