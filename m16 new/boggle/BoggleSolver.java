@@ -421,18 +421,24 @@ public class BoggleSolver {
      * @return The set of all valid words in the given Boggle board, as an Iterable.
      */
     public Iterable<String> getAllValidWords(BoggleBoard board) {
-        try {
-            } catch (Exception ex) {
-                System.out.println("board is null");
-            }
-        TreeSet<String> words = new TreeSet<>();
+        // try {
+        //     } catch (Exception ex) {
+        //         System.out.println("board is null");
+        //     }
+        try{
+            TreeSet<String> words = new TreeSet<>();
         for (int i = 0; i < board.rows(); i++) {
             for (int j = 0; j < board.cols(); j++) {
                 searchWords(board, i, j, words);
             }
         }
         return words;
-    }
+    
+    }catch(Exception ex) {
+    //System.out.println("board is null");
+}System.out.println("board is null");
+return null;
+}
 
     private void searchWords(BoggleBoard board, int i, int j, TreeSet<String> words) {
         boolean[][] visited = new boolean[board.rows()][board.cols()];
