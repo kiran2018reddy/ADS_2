@@ -136,10 +136,10 @@ class T9 {
      */
     public T9(BinarySearchST<String, Integer> st) {
         // your code goes here
-        tst = new TST<>();
-        for (String each : st.keys()) {
-            tst.put(each, st.get(each));
-        }
+        // tst = new TST<>();
+        // for (String each : st.keys()) {
+        //     tst.put(each, st.get(each));
+        // }
     }
 /**
  * Gets all words.
