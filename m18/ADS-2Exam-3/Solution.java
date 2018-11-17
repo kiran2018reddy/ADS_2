@@ -10,7 +10,7 @@ public class Solution {
      *
      * @param      args  The arguments.
      */
-public static void main(String[] args) {
+public static void main(final String[] args) {
         Scanner scan = new Scanner(System.in);
         String cases = scan.nextLine();
 
@@ -111,7 +111,7 @@ BinarySearchST<String, Integer>  st = new BinarySearchST<String, Integer>();
         for (int i = 0; i < dictionary.length; i++) {
             String word = dictionary[i].toLowerCase();
             if (st.contains(word)) {
-                st.put(word ,st.get(word )+ 1);
+                st.put(word, st.get(word) + 1);
             } else {
                 st.put(word, 1);
             }
@@ -127,10 +127,11 @@ class T9 {
     /**
      * { var_description }.
      */
-    TST<Integer> tst;
+     TST<Integer> tst;
     /**
-     * { item_description }.
-     * 
+     * Constructs the object.
+     *
+     * @param      st    { parameter_description }.
      */
     public T9(BinarySearchST<String, Integer> st) {
         // your code goes here
@@ -139,13 +140,24 @@ class T9 {
             tst.put(each, st.get(each));
         }
     }
-
-    // get all the prefixes that match with given prefix.
+/**
+ * Gets all words.
+ *
+ * @param      prefix  The prefix.
+ *
+ * @return     All words.
+ */
     public final Iterable<String> getAllWords(final String prefix) {
         // your code goes here
         return tst.keysWithPrefix(prefix);
     }
-
+/**
+ * { function_description }.
+ *
+ * @param      t9Signature  The t 9 signature.
+ *
+ * @return     { description_of_the_return_value }.
+ */
     public final  Iterable<String> potentialWords(final String t9Signature) {
         // your code goes here
     return null;
@@ -159,14 +171,15 @@ class T9 {
      *
      * @return     The suggestions.
      */
-    public final Iterable<String> getSuggestions(final Iterable<String> words, int k) {
+public final Iterable<String>
+getSuggestions(final Iterable<String> words,final int k) {
         // your code goes here
         ArrayList<String> arr = new ArrayList<>();
         MaxPQ<Integer> max = new MaxPQ<>();
         for (String each : words) {
             max.insert(tst.get(each));
         }
-        for (int i = 0;i < k; i++) {
+        for (int i = 0; i < k; i++) {
             int j = max.delMax();
             for (String word : words) {
                 if (j == tst.get(word)) {
@@ -186,7 +199,7 @@ class T9 {
      *
      * @return     { description_of_the_return_value }.
      */
-    public final  Iterable<String> t9(final String t9Signature, int k) {
+    public final  Iterable<String> t9(final String t9Signature,final int k) {
         return getSuggestions(potentialWords(t9Signature), k);
     }
 }
