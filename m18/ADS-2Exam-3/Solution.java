@@ -4,14 +4,13 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
- class Solution {
-    
+public class Solution {
     /**
      * { function_description }.
      *
      * @param      args  The arguments.
      */
-public static void main(final String[] args) {
+public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String cases = scan.nextLine();
 
@@ -112,7 +111,7 @@ BinarySearchST<String, Integer>  st = new BinarySearchST<String, Integer>();
         for (int i = 0; i < dictionary.length; i++) {
             String word = dictionary[i].toLowerCase();
             if (st.contains(word)) {
-                st.put(word, st.get(word) + 1);
+                st.put(word ,st.get(word) + 1);
             } else {
                 st.put(word, 1);
             }
@@ -128,7 +127,7 @@ class T9 {
     /**
      * { var_description }.
      */
-     TST<Integer> tst;
+    TST<Integer> tst;
     /**
      * Constructs the object.
      *
@@ -136,10 +135,10 @@ class T9 {
      */
     public T9(BinarySearchST<String, Integer> st) {
         // your code goes here
-        // tst = new TST<>();
-        // for (String each : st.keys()) {
-        //     tst.put(each, st.get(each));
-        // }
+        tst = new TST<>();
+        for (String each : st.keys()) {
+            tst.put(each, st.get(each));
+        }
     }
 /**
  * Gets all words.
@@ -173,7 +172,7 @@ class T9 {
      * @return     The suggestions.
      */
 public final Iterable<String>
-getSuggestions(final Iterable<String> words, final int k) {
+getSuggestions(final Iterable<String> words,final int k) {
         // your code goes here
         ArrayList<String> arr = new ArrayList<>();
         MaxPQ<Integer> max = new MaxPQ<>();
@@ -200,7 +199,7 @@ getSuggestions(final Iterable<String> words, final int k) {
      *
      * @return     { description_of_the_return_value }.
      */
-    public final  Iterable<String> t9(final String t9Signature, final int k) {
+    public final  Iterable<String> t9(final String t9Signature,final int k) {
         return getSuggestions(potentialWords(t9Signature), k);
     }
 }
