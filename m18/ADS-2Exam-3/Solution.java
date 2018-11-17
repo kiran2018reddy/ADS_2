@@ -172,7 +172,7 @@ class T9 {
      * @return     The suggestions.
      */
 public final Iterable<String>
-getSuggestions(final Iterable<String> words,final int k) {
+getSuggestions(final Iterable<String> words, final int k) {
         // your code goes here
         ArrayList<String> arr = new ArrayList<>();
         MaxPQ<Integer> max = new MaxPQ<>();
@@ -199,7 +199,7 @@ getSuggestions(final Iterable<String> words,final int k) {
      *
      * @return     { description_of_the_return_value }.
      */
-    public final  Iterable<String> t9(final String t9Signature,final int k) {
+    public final  Iterable<String> t9(final String t9Signature, final int k) {
         return getSuggestions(potentialWords(t9Signature), k);
     }
 }
