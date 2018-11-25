@@ -69,7 +69,8 @@ class Newgraph implements Graph {
      Newgraph() {
     }
     /**
-     * Constructs the object.
+     * Constructs the object
+     * O(N)
      *
      * @param      vert  The vertical
      */
